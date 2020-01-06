@@ -38,13 +38,13 @@ while row_index < Max_Row:
     while col_index < Max_Col:
         if row_index == 0:
             Min_cost = Setup_Cost
-            RT = RT + df.iloc[Max_Row-2, col_index] * (df.iloc[Max_Row - 1, col_index] - col_index_start)
+            RT = RT + df.iloc[Max_Row-2, col_index] * (df.iloc[Max_Row - 1, col_index] - col_index_start) * Hold_Cost
             df.iloc[row_index, col_index] = RT + Min_cost
             col_index += 1
             # one time buy
         else:
             Min_cost = df.iloc[0:Max_Row - 2, col_index_start-1].min()
-            RT = RT + df.iloc[Max_Row - 2, col_index] * (df.iloc[Max_Row - 1, col_index] - col_index_start)
+            RT = RT + df.iloc[Max_Row - 2, col_index] * (df.iloc[Max_Row - 1, col_index] - col_index_start) * Hold_Cost
             df.iloc[row_index, col_index] = RT + Min_cost
             col_index += 1
     row_index += 1
