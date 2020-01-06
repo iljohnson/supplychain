@@ -11,7 +11,7 @@ homepath = os.path.expanduser("~\\Desktop")
 open_file = os.path.join(homepath, 'WagnerWhiten_Test_Data_Seasonality.xlsx')
 
 
-df = pd.read_excel(open_file, sheet_name='Sheet1')
+df = pd.read_excel(open_file, sheet_name='Sheet2')
 
 df_shape = df.shape
 
@@ -62,7 +62,7 @@ while min_idx > 0:
     min_idx_old = min_idx
     min_value = df.iloc[0:Max_Row - 4, min_idx_old].min()
     min_idx = df.index[df.iloc[0:Max_Row - 4, min_idx_old].idxmin(axis=1)]
-    make_qty = str(df.iloc[12, min_idx+1:min_idx_old + 1].sum())
+    make_qty = str(df.iloc[Max_Row-4, min_idx+1:min_idx_old + 1].sum())
     task = ("In period " + str(min_idx + 1) + " make quantity " + make_qty + "   ") + task
 
 print(task)
